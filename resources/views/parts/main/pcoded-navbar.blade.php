@@ -35,7 +35,7 @@
                                     <li class=" ">
                                         <a href="/peta-sebaran">
                                             <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                            <span class="pcoded-mtext">Peta Jember</span>
+                                            <span class="pcoded-mtext">Peta Sebaran</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
