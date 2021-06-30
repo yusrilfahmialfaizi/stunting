@@ -1,7 +1,11 @@
                 <nav class="pcoded-navbar">
                     <div class="pcoded-inner-navbar">
                         <ul class="pcoded-item pcoded-left-item">
+                            @if(Request::segment(1) == "dashboard")
+                            <li class="pcoded-hasmenu {{ Request::is('dashboard') ? 'active' : 'active' }}">
+                                @else
                             <li class="pcoded-hasmenu">
+                                @endif
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                     <span class="pcoded-mtext">Home</span>
@@ -9,7 +13,7 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
-                                        <a href="javascript:void(0)">
+                                        <a href="/dashboard">
                                             <span class="pcoded-micon"><i class="ti-home"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                             <span class="pcoded-mcaret"></span>
@@ -17,7 +21,11 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="pcoded-hasmenu">
+                            @if (Request::segment(1) == "peta-sebaran")
+                            <li class="pcoded-hasmenu {{ Request::is('peta-sebaran') ? 'active' : 'active' }}">
+                                @else
+                            <li class="pcoded-hasmenu">    
+                            @endif
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="feather icon-map"></i></span>
                                     <span class="pcoded-mtext">Peta</span>
@@ -25,7 +33,7 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
-                                        <a href="javascript:void(0)">
+                                        <a href="/peta-sebaran">
                                             <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                                             <span class="pcoded-mtext">Peta Jember</span>
                                             <span class="pcoded-mcaret"></span>
