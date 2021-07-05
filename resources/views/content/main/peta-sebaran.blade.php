@@ -177,6 +177,20 @@
                                 position: 'bottomright'
                             });
 
+                            var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
+
+                            L.esri.Geocoding.geosearch({
+                                providers: [
+                                    arcgisOnline,
+                                    L.esri.Geocoding.mapServiceProvider({
+                                        label: 'States and Counties',
+                                        url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer',
+                                        layers: [2, 3],
+                                        searchFields: ['NAME', 'STATE_NAME']
+                                    })
+                                ]
+                            }).addTo(map);
+
                             L.control.layers(baseLayers, overlays).addTo(map);
                             // legend.onAdd = function (map) {
 
