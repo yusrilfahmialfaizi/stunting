@@ -43,22 +43,41 @@
                     <script type="text/javascript" src="{{asset('assets/kalisat.js')}}"></script>
                     <script>
                         $(document).ready(function() {
+                            var stunting = L.layerGroup();
+
+                            L.marker([-8.133347613059657, 113.80648288324299]).addTo(stunting).bindPopup("Kantor Kecamatan Kalisat").openPopup();
+
+
+                            var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                                mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+                            var streets = L.tileLayer(mbUrl, {
+                                    id: 'mapbox/streets-v11',
+                                    tileSize: 512,
+                                    zoomOffset: -1,
+                                    attribution: mbAttr
+                                });
+
                             var map = L.map('map', {
                                 center: [-8.133347613059657, 113.80648288324299],
-                                zoom: 13
+                                zoom: 13,
+                                layers: [streets, stunting]
                             });
 
-                            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                                maxZoom: 18,
-                                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' + 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                                id: 'mapbox/streets-v11',
-                                tileSize: 512,
-                                zoomOffset: -1
-                            }).addTo(map);
+                            var baseLayers = {
+                                "Streets": streets
+                            };
 
-                            var marker = L.marker([-8.133347613059657, 113.80648288324299]).addTo(map)
-                                .bindPopup("Kantor Kecamatan Kalisat").openPopup();
+                            var overlays = {
+                                "Stunting": stunting
+                            };
+
+                            
+
                             var popup = L.popup();
+                            L.control.scale().addTo(map);
+
 
                             function onMapClick(e) {
                                 popup
@@ -67,9 +86,9 @@
                                     .openOn(map);
                             }
 
+                            // control that shows state info on hover
                             map.on('click', onMapClick);
                             
-                            // control that shows state info on hover
                             var info = L.control();
 
                             info.onAdd = function (map) {
@@ -158,6 +177,7 @@
                                 position: 'bottomright'
                             });
 
+                            L.control.layers(baseLayers, overlays).addTo(map);
                             // legend.onAdd = function (map) {
 
                             //     var div = L.DomUtil.create('div', 'info legend'),
