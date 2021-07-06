@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "746282474380",
+    "firebase_url": "https://sigenting-672bd-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "sigenting-672bd",
+    "storage_bucket": "sigenting-672bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746282474380:android:871387a43f0fc1cf04d4a9",
+        "android_client_info": {
+          "package_name": "com.ksi.stunting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746282474380-l4hcg8hueco6ge4el447on098c3h0qsf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9SCv_NGlzAX314YCrnxuAESOycE2sJR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746282474380-l4hcg8hueco6ge4el447on098c3h0qsf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

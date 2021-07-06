@@ -61,7 +61,7 @@
 
                             var map = L.map('map', {
                                 center: [-8.133347613059657, 113.80648288324299],
-                                zoom: 13,
+                                zoom: 12,
                                 layers: [streets, stunting]
                             });
 
@@ -164,11 +164,11 @@
                                     click: zoomToFeature
                                 });
                             }
-                            console.log(statesData);
+                            // console.log(statesData);
                             geojson = L.geoJson(statesData, {
                                 style: style,
                                 onEachFeature: onEachFeature
-                            }).addTo(map);
+                            }).addTo(stunting);
 
                             map.attributionControl.addAttribution('Data Stunting</a>');
 
@@ -177,18 +177,22 @@
                                 position: 'bottomright'
                             });
 
-                            var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
+                            var arcgisOnlineProvider = L.esri.Geocoding.arcgisOnlineProvider({
+                                apikey: "https://developers.arcgis.com" // replace with your api key - https://developers.arcgis.com
+                            });
+
+                            var gisDayProvider = L.esri.Geocoding.featureLayerProvider({
+                                url: 'https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GIS_Day_Registration_Form_2019_Hosted_View_Layer/FeatureServer/0',
+                                searchFields: ['event_name', 'host_organization'],
+                                label: 'GIS Day Events 2019',
+                                bufferRadius: 5000,
+                                formatSuggestion: function (feature) {
+                                    return feature.properties.event_name + ' - ' + feature.properties.host_organization;
+                                }
+                            });
 
                             L.esri.Geocoding.geosearch({
-                                providers: [
-                                    arcgisOnline,
-                                    L.esri.Geocoding.mapServiceProvider({
-                                        label: 'States and Counties',
-                                        url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer',
-                                        layers: [2, 3],
-                                        searchFields: ['NAME', 'STATE_NAME']
-                                    })
-                                ]
+                                providers: [arcgisOnlineProvider, gisDayProvider]
                             }).addTo(map);
 
                             L.control.layers(baseLayers, overlays).addTo(map);
