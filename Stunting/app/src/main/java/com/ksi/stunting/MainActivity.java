@@ -12,6 +12,9 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("MissingPermission")
@@ -19,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // GET CURRENT LOCATION
         FusedLocationProviderClient mFusedLocation = LocationServices.getFusedLocationProviderClient(this);
         mFusedLocation.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,
                             "Lat : " + location.getLatitude() + " Long : " + location.getLongitude(),
                             Toast.LENGTH_LONG).show();
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                    mDatabase.child("latitude").setValue(location.getLatitude());
+                    mDatabase.child("longitude").setValue(location.getLongitude());
                 }
             }
         });

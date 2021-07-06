@@ -43,9 +43,37 @@
                     <script type="text/javascript" src="{{asset('assets/kalisat.js')}}"></script>
                     <script>
                         $(document).ready(function() {
+
+                            // Your web app's Firebase configuration
+                            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                            var firebaseConfig = {
+                                apiKey: "AIzaSyAfh--fPWoeCb7yUw-okdJ92-zVpR_1MiA",
+                                authDomain: "sigenting-672bd.firebaseapp.com",
+                                databaseURL: "https://sigenting-672bd-default-rtdb.asia-southeast1.firebasedatabase.app",
+                                projectId: "sigenting-672bd",
+                                storageBucket: "sigenting-672bd.appspot.com",
+                                messagingSenderId: "746282474380",
+                                appId: "1:746282474380:web:2aed03ce2394602904d4a9",
+                                measurementId: "G-GYYF3J079B"
+                            };
+                            // Initialize Firebase
+                            firebase.initializeApp(firebaseConfig);
+                            firebase.analytics();
+                            var longitude;
+                            var latitude;
+
                             var stunting = L.layerGroup();
 
                             L.marker([-8.133347613059657, 113.80648288324299]).addTo(stunting).bindPopup("Kantor Kecamatan Kalisat").openPopup();
+
+                            firebase.database().ref('longitude').on('value', (snap) => {
+                                longitude = snap.val();
+                                firebase.database().ref('latitude').on('value', (snap) => {
+                                    latitude = snap.val();
+                                    L.marker([latitude, longitude]).addTo(stunting).bindPopup("Lokasi Saat ini");
+                                });
+                            });
+
 
 
                             var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
