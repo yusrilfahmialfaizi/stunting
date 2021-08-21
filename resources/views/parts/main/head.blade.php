@@ -26,6 +26,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets\assets\icon\themify-icons\themify-icons.css')}}">
     <!-- Syntax highlighter Prism css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\assets\pages\prism\prism.css')}}">
+    <!-- Select 2 css -->
+    <link rel="stylesheet" href="{{asset('assets\bower_components/select2/css/select2.min.css')}}" />
+    <!-- Multi Select css -->
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('assets\bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\bower_components/multiselect/css/multi-select.css')}}" />
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\assets\css\style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets\assets\css\jquery.mCustomScrollbar.css')}}">

@@ -44,35 +44,47 @@
                     <script>
                         $(document).ready(function() {
 
-                            // Your web app's Firebase configuration
-                            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-                            var firebaseConfig = {
-                                apiKey: "AIzaSyAfh--fPWoeCb7yUw-okdJ92-zVpR_1MiA",
-                                authDomain: "sigenting-672bd.firebaseapp.com",
-                                databaseURL: "https://sigenting-672bd-default-rtdb.asia-southeast1.firebasedatabase.app",
-                                projectId: "sigenting-672bd",
-                                storageBucket: "sigenting-672bd.appspot.com",
-                                messagingSenderId: "746282474380",
-                                appId: "1:746282474380:web:2aed03ce2394602904d4a9",
-                                measurementId: "G-GYYF3J079B"
-                            };
-                            // Initialize Firebase
-                            firebase.initializeApp(firebaseConfig);
-                            firebase.analytics();
-                            var longitude;
-                            var latitude;
+                            // // Your web app's Firebase configuration
+                            // // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                            // var firebaseConfig = {
+                            //     apiKey: "AIzaSyAfh--fPWoeCb7yUw-okdJ92-zVpR_1MiA",
+                            //     authDomain: "sigenting-672bd.firebaseapp.com",
+                            //     databaseURL: "https://sigenting-672bd-default-rtdb.asia-southeast1.firebasedatabase.app",
+                            //     projectId: "sigenting-672bd",
+                            //     storageBucket: "sigenting-672bd.appspot.com",
+                            //     messagingSenderId: "746282474380",
+                            //     appId: "1:746282474380:web:2aed03ce2394602904d4a9",
+                            //     measurementId: "G-GYYF3J079B"
+                            // };
+                            // // Initialize Firebase
+                            // firebase.initializeApp(firebaseConfig);
+                            // firebase.analytics();
+                            // var longitude;
+                            // var latitude;
 
                             var stunting = L.layerGroup();
+                            var umkm = L.layerGroup();
 
-                            L.marker([-8.133347613059657, 113.80648288324299]).addTo(stunting).bindPopup("Kantor Kecamatan Kalisat").openPopup();
+                            L.marker([-8.125503434883228, 113.80904096228058]).addTo(stunting).bindPopup("Desa Kalisat").openPopup();
+                            L.marker([-8.132476275692488, 113.82167901703589]).addTo(stunting).bindPopup("Desa Ajung").openPopup();
+                            L.marker([-8.154649283611384, 113.81099439928921]).addTo(stunting).bindPopup("Desa Gambiran").openPopup();
+                            L.marker([-8.140062, 113.805404]).addTo(stunting).bindPopup("Desa Glagahwero").openPopup();
+                            L.marker([-8.122859810723222, 113.78100150785717]).addTo(stunting).bindPopup("Desa Gumuksari").openPopup();
+                            L.marker([-8.116063, 113.796753]).addTo(stunting).bindPopup("Desa Patempuran").openPopup();
+                            L.marker([-8.141124159209618, 113.82727512557274]).addTo(stunting).bindPopup("Desa Plalangan").openPopup();
+                            L.marker([-8.098947704220556, 113.82152334856546]).addTo(stunting).bindPopup("Desa Sebanen").openPopup();
+                            L.marker([-8.103997, 113.787054]).addTo(stunting).bindPopup("Desa Sukoreno").openPopup();
+                            L.marker([-8.131348732809496, 113.7961014636392]).addTo(stunting).bindPopup("Desa Sumber Jeruk").openPopup();
+                            L.marker([-8.086019328665126, 113.79139447897944]).addTo(stunting).bindPopup("Desa Sumber Kalong").openPopup();
+                            L.marker([-8.117572574122546, 113.82618268324286]).addTo(stunting).bindPopup("Desa Sumber Ketempa").openPopup();
 
-                            firebase.database().ref('longitude').on('value', (snap) => {
-                                longitude = snap.val();
-                                firebase.database().ref('latitude').on('value', (snap) => {
-                                    latitude = snap.val();
-                                    L.marker([latitude, longitude]).addTo(stunting).bindPopup("Lokasi Saat ini");
-                                });
-                            });
+                            // firebase.database().ref('longitude').on('value', (snap) => {
+                            //     longitude = snap.val();
+                            //     firebase.database().ref('latitude').on('value', (snap) => {
+                            //         latitude = snap.val();
+                            //         L.marker([latitude, longitude]).addTo(stunting).bindPopup("Lokasi Saat ini");
+                            //     });
+                            // });
 
 
 
@@ -90,7 +102,7 @@
                             var map = L.map('map', {
                                 center: [-8.133347613059657, 113.80648288324299],
                                 zoom: 12,
-                                layers: [streets, stunting]
+                                layers: [streets]
                             });
 
                             var baseLayers = {
@@ -98,7 +110,8 @@
                             };
 
                             var overlays = {
-                                "Stunting": stunting
+                                "Stunting": stunting, 
+                                "UMKM": umkm
                             };
 
                             
@@ -126,7 +139,7 @@
                             };
 
                             info.update = function (props) {
-                                this._div.innerHTML = '<b>KECAMATAN KALISAT</b><br/>' + (props ?
+                                this._div.innerHTML = '' + (props ?
                                     '<b>DESA ' + props.name + '</b><br />' :
                                     '');
                             };
@@ -175,9 +188,11 @@
                             }
 
                             var geojson;
+                            var geoJson1;
 
                             function resetHighlight(e) {
                                 geojson.resetStyle(e.target);
+                                geojson1.resetStyle(e.target);
                                 info.update();
                             }
 
@@ -198,7 +213,12 @@
                                 onEachFeature: onEachFeature
                             }).addTo(stunting);
 
-                            map.attributionControl.addAttribution('Data Stunting</a>');
+                            geojson1 = L.geoJson(kemuningData, {
+                                style: style,
+                                onEachFeature: onEachFeature
+                            }).addTo(umkm);
+
+                            map.attributionControl.addAttribution('Data Stunting dan UMKM</a>');
 
 
                             var legend = L.control({

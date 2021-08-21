@@ -41,10 +41,30 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="pcoded-hasmenu">
+                            @if (Request::segment(1) == "zscore")
+                            <li class="pcoded-hasmenu {{ Request::is('zscore') ? 'active' : 'active' }}">
+                                @else
+                            <li class="pcoded-hasmenu">    
+                            @endif
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
                                     <span class="pcoded-mtext">Klasifikasi</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="/zscore" data-i18n="nav.form-pickers.main">
+                                            <span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
+                                            <span class="pcoded-mtext">Zscore</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-server"></i></span>
+                                    <span class="pcoded-mtext">Data</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">

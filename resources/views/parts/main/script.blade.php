@@ -1,5 +1,5 @@
 <!-- Required Jquery -->
-    {{-- <script data-cfasync="false" src="..\..\..\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js"></script> --}}
+    {{-- <script data-cfasync="false" src="..\..\..\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js')}}"></script> --}}
     <script type="text/javascript" src="{{asset('assets\bower_components\jquery\js\jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\bower_components\popper.js\js\popper.min.js')}}"></script>
@@ -15,8 +15,19 @@
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\amcharts.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\serial.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\light.js')}}"></script>
+    <!-- Select 2 js -->
+    <script type="text/javascript" src="{{asset('assets\bower_components/select2/js/select2.full.min.js')}}"></script>
+    <!-- Multiselect js -->
+    <script type="text/javascript"
+        src="{{asset('assets\bower_components/bootstrap-multiselect/js/bootstrap-multiselect.js')}}">
+
+
+        </script>
+    <script type="text/javascript" src="{{asset('assets\bower_components/multiselect/js/jquery.multi-select.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\assets/js/jquery.quicksearch.js')}}"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\custom-dashboard.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\assets/pages/advance-elements/select2-custom.js')}}"></script>
     <script src="{{asset('assets\assets\js\pcoded.min.js')}}"></script>
     <script src="{{asset('assets\assets\js\horizontal-layout.min.js')}}"></script>
     <script src="{{asset('assets\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
