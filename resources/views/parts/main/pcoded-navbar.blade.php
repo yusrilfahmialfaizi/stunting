@@ -69,6 +69,8 @@
                             <li class="pcoded-hasmenu {{ Request::is('data_bbtb') ? 'active' : 'active' }}">
                                 @elseif (Request::segment(1) == "data_imtu")
                             <li class="pcoded-hasmenu {{ Request::is('data_imtu') ? 'active' : 'active' }}">
+                                @elseif (Request::segment(1) == "data_anak")
+                            <li class="pcoded-hasmenu {{ Request::is('data_anak') ? 'active' : 'active' }}">
                                 @else
                             <li class="pcoded-hasmenu">    
                             @endif
@@ -78,6 +80,13 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="/data_anak" data-i18n="nav.form-components.main">
+                                            <span class="pcoded-micon"><i class="ti-layers"></i></span>
+                                            <span class="pcoded-mtext">Data Anak</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
                                     <li class=" ">
                                         <a href="/data_bbu" data-i18n="nav.form-components.main">
                                             <span class="pcoded-micon"><i class="ti-layers"></i></span>
