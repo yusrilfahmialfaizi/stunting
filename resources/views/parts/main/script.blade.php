@@ -15,6 +15,20 @@
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\amcharts.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\serial.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\light.js')}}"></script>
+    <!-- data-table js -->
+    <script src="{{asset('assets\bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('assets\assets\pages\data-table\js\jszip.min.js')}}"></script>
+    <script src="{{asset('assets\assets\pages\data-table\js\pdfmake.min.js')}}"></script>
+    <script src="{{asset('assets\assets\pages\data-table\js\vfs_fonts.js')}}"></script>
+    <script src="{{asset('assets\bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
+    <script src="{{asset('assets\bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
+    <script src="{{asset('assets\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('assets\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}">
+    </script>
+    <script src="{{asset('assets\assets\pages\data-table\extensions\buttons\js\extension-btns-custom.js')}}"></script>
+    <script src="{{asset('assets\assets\pages\data-table\js\data-table-custom.js')}}"></script>
     <!-- Select 2 js -->
     <script type="text/javascript" src="{{asset('assets\bower_components/select2/js/select2.full.min.js')}}"></script>
     <!-- Multiselect js -->

@@ -15,7 +15,7 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h5>Status Gizi Anak</h5>
-                                                        <span class="text-muted">Data BB/U Anak Laki-Laki dan Perempuan menurut Permenkes
+                                                        <span class="text-muted">Data IMT/U Anak Laki-Laki dan Perempuan menurut Permenkes
                                                             No.2 Tahun 2020</span>
                                                         <div class="card-header-right">
                                                             <ul class="list-unstyled card-option">

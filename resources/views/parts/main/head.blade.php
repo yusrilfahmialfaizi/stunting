@@ -26,6 +26,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets\assets\icon\themify-icons\themify-icons.css')}}">
     <!-- Syntax highlighter Prism css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\assets\pages\prism\prism.css')}}">
+    <!-- Data Table Css -->
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('assets\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('assets\assets\pages\data-table\css\buttons.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('assets\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css')}}">
     <!-- Select 2 css -->
     <link rel="stylesheet" href="{{asset('assets\bower_components/select2/css/select2.min.css')}}" />
     <!-- Multi Select css -->
