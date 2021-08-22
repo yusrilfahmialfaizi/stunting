@@ -9,6 +9,8 @@ use App\Http\Controllers\DataTBpUController;
 use App\Http\Controllers\DataBBpTBController;
 use App\Http\Controllers\DataIMTpUController;
 use App\Http\Controllers\DataAnakController;
+use App\Http\Controllers\DataUserController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,9 @@ use App\Http\Controllers\DataAnakController;
 |
 */
 
+Route::get('/', [LoginController::class, 'index']);
+Route::post('/auth', [LoginController::class, 'auth']);
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/peta-sebaran', [PetasebaranController::class, 'index']);
 Route::get('/zscore', [KlasifikasiController::class, 'index']);
@@ -30,3 +35,4 @@ Route::get('/data_tbu', [DataTBpUController::class, 'index']);
 Route::get('/data_bbtb', [DataBBpTBController::class, 'index']);
 Route::get('/data_imtu', [DataIMTpUController::class, 'index']);
 Route::get('/data_anak', [DataAnakController::class, 'index']);
+Route::get('/tambah_user', [DataUserController::class, 'tambah_user']);

@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\DB;
 class KlasifikasiController extends Controller
 {
     //
-    function index(){
-        // if ($request->session()->get('status') != 'login'){
-        //         return redirect('/');
-        //     };
+    function index(Request $request){
+        if ($request->session()->get('status') != 'login'){
+                return redirect('/');
+        };
         // return view('contents/main/analisis');
         return view('content/main/Zscore');
     }

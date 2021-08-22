@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\DB;
 class DataBBpUController extends Controller
 {
     //
-    function index(){
+    function index(Request $request){
+        if ($request->session()->get('status') != 'login'){
+                return redirect('/');
+        };
         $data['dataset'] = DB::table('tbl_bb_u')->get();
         return view("content/main/data_BBpU", $data);
     }
