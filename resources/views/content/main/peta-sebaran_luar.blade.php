@@ -1,4 +1,4 @@
-                    @extends('parts.main.admin.master')
+                    @extends('parts.main.master')
                     @section('content')
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -236,7 +236,7 @@
                             var map = L.map('map', {
                                 center: [-8.133347613059657, 113.80648288324299],
                                 zoom: 12,
-                                layers: [streets,stunting]
+                                layers: [streets]
                             });
 
                             var baseLayers = {
@@ -244,7 +244,8 @@
                             };
 
                             var overlays = {
-                                "Stunting": stunting
+                                "Stunting": stunting, 
+                                "UMKM": umkm
                             };
 
                             

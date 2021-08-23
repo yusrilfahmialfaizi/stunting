@@ -1,4 +1,4 @@
-                    @extends('parts.main.master')
+                    @extends('parts.main.admin.master')
                     @section('content')
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -25,6 +25,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-block">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-2">
+                                                                <a href="/tambah_anak" class="btn btn-primary"> + Tambah Data Anak</a>
+                                                            </div>
+                                                        </div>
                                                         <hr>
                                                         <div class="dt-responsive table-responsive">
                                                             <table id="basic-btn"
@@ -50,13 +55,13 @@
                                                                     @endphp
                                                                     @foreach($dataset as $data)
                                                                     <tr>
-                                                                        <td>{{$data->id}}</td>
+                                                                        <td>{{$data->id_anak}}</td>
                                                                         <td>{{$data->nama_anak}}</td>
                                                                         <td>{{$data->nama_ayah}}</td>
                                                                         <td>{{$data->nama_ibu}}</td>
                                                                         <td>{{$data->jenis_kelamin}}</td>
                                                                         <td>{{$data->tgl_lahir}}</td>
-                                                                        <td>{{$data->desa}}</td>
+                                                                        <td>{{$data->nama_desa}}</td>
                                                                         <td>{{$data->dusun}}</td>
                                                                         <td>{{$data->rt}}</td>
                                                                         <td>{{$data->rw}}</td>

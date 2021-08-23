@@ -1,4 +1,4 @@
-                    @extends('parts.main.master')
+                    @extends('parts.main.admin.master')
                     @section('content')
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -50,7 +50,7 @@
                                                                     @endphp
                                                                     @foreach($dataset as $data)
                                                                     <tr>
-                                                                        <td>{{$data->id}}</td>
+                                                                        <td>{{$data->id_pbu}}</td>
                                                                         <td>{{$data->umur}}</td>
                                                                         <td>{{$data->m3SD}}</td>
                                                                         <td>{{$data->m2SD}}</td>

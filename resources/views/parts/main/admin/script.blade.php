@@ -32,14 +32,17 @@
     <!-- Select 2 js -->
     <script type="text/javascript" src="{{asset('assets\bower_components/select2/js/select2.full.min.js')}}"></script>
     <!-- Multiselect js -->
-    <script type="text/javascript" src="{{asset('assets\bower_components/bootstrap-multiselect/js/bootstrap-multiselect.js')}}"></script>
+    <script type="text/javascript"
+        src="{{asset('assets\bower_components/bootstrap-multiselect/js/bootstrap-multiselect.js')}}">
+
+
+        </script>
     <script type="text/javascript" src="{{asset('assets\bower_components/multiselect/js/jquery.multi-select.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets/js/jquery.quicksearch.js')}}"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\custom-dashboard.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets/pages/advance-elements/select2-custom.js')}}"></script>
     <script src="{{asset('assets\assets\js\pcoded.min.js')}}"></script>
-    {{-- <script src="{{asset('assets\assets/js/menu/menu-hori-fixed.js')}}"></script> --}}
     <script src="{{asset('assets\assets\js\horizontal-layout.min.js')}}"></script>
     <script src="{{asset('assets\assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets\js\script.js')}}"></script>

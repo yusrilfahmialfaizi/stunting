@@ -1,4 +1,4 @@
-                    @extends('parts.main.master')
+                    @extends('parts.main.admin.master')
                     @section('content')
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -27,11 +27,14 @@
                                                     </div>
                                                     <div class="card-block">
                                                         <hr>
-                                                        <form method="post" action="#" accept-charset="UTF-8">
+                                                        <form method="post" action="{{action('App\Http\Controllers\KlasifikasiController@simpan_data')}}" accept-charset="UTF-8">
                                                             {{ csrf_field() }}
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">Nama Anak</label>
                                                                 <div class="col-sm-4">
+                                                                    <input type="text" name="id_anak" id="id_anak"
+                                                                        class="form-control" placeholder="Kode Anak"
+                                                                        value="@php print_r($hasil['id_anak']); @endphp" hidden readonly>
                                                                     <input type="text" name="nama_anak" id="nama_anak"
                                                                         class="form-control" placeholder="Nama Anak"
                                                                         value="@php print_r($hasil['nama_anak']); @endphp" readonly>
@@ -59,13 +62,7 @@
                                                                 <div class="col-sm-4">
                                                                     <input type="text" name="jenis_kelamin"
                                                                         id="jenis_kelamin" class="form-control"
-                                                                        placeholder="Jenis Kelamin" value="@php 
-                                                                        if($hasil['jenis_kelamin'] == "L"){
-                                                                            echo "Laki - Laki";
-                                                                        }elseif ($hasil['jenis_kelamin'] == 'P') {
-                                                                            echo "Perempuan";
-                                                                        }; 
-                                                                        @endphp" 
+                                                                        placeholder="Jenis Kelamin" value="{{$hasil['jenis_kelamin']}}" 
                                                                         readonly>
                                                                 </div>
                                                             </div>
@@ -73,7 +70,7 @@
                                                                 <label class="col-sm-2 col-form-label">Tanggal
                                                                     Lahir</label>
                                                                 <div class="col-sm-4">
-                                                                    <input type="date" name="tgl_lahir" id="tgl_lahir"
+                                                                    <input type="text" name="tgl_lahir" id="tgl_lahir"
                                                                         class="form-control" placeholder="Tanggal Lahir" value="@php print_r($hasil['tgl_lahir']); @endphp"
                                                                         readonly>
                                                                 </div>
@@ -131,8 +128,8 @@
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">TB / PB</label>
                                                                 <div class="col-sm-2">
-                                                                    <input type="number" name="bb" id="bb"
-                                                                    class="form-control" placeholder="BB dalam KG"
+                                                                    <input type="number" name="tb" id="tb"
+                                                                    class="form-control" placeholder="TB dalam cm"
                                                                     value="@php print_r($hasil['TB']); @endphp" readonly>
                                                                 </div>
                                                                 <label class="col-sm-2 col-form-label">cm</label>
@@ -181,7 +178,7 @@
                                                                         value="@php print_r($hasil['ZScore_BBpTB']); @endphp" readonly>
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <input type="text" name="bbtb" id="bbtb"
+                                                                    <input type="text" name="bbptb" id="bbptb"
                                                                         class="form-control" placeholder="BB dalam KG"
                                                                         value="@php print_r($hasil['BBTB']); @endphp" readonly>
                                                                 </div>
@@ -194,17 +191,18 @@
                                                                         value="@php print_r($hasil['ZScore_IMTpU']); @endphp" readonly>
                                                                 </div>
                                                                 <div class="col-sm-4">
-                                                                    <input type="text" name="imtu" id="imtu"
+                                                                    <input type="text" name="imtpu" id="imtpu"
                                                                         class="form-control" placeholder="BB dalam KG"
                                                                         value="@php print_r($hasil['IMTU']); @endphp" readonly>
                                                                 </div>
                                                             </div>
-                                                            {{-- <div class="form-group">
+                                                            <hr>
+                                                            <div class="form-group">
                                                                 <div class="col-sm-2">
-                                                                    <button class="btn btn-primary" name="analys"
-                                                                    id="analys">Analysis</button>
+                                                                    <button class="btn btn-primary" name="simpan"
+                                                                    id="simpan">Simpan Data</button>
                                                                 </div>
-                                                            </div> --}}
+                                                            </div>
                                                         </form>
                                                     </div>
                                                 </div>

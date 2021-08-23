@@ -23,11 +23,14 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', [LoginController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index']);
 Route::post('/auth', [LoginController::class, 'auth']);
 Route::get('/logout', [LoginController::class, 'logout']);
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/coba', [DashboardController::class, 'coba']);
 Route::get('/peta-sebaran', [PetasebaranController::class, 'index']);
+Route::get('/peta-sebaran-stunting', [PetasebaranController::class, 'peta']);
 Route::get('/zscore', [KlasifikasiController::class, 'index']);
 Route::post('/perhitungan_zscore', [KlasifikasiController::class, 'zscore']);
 Route::get('/data_bbu', [DataBBpUController::class, 'index']);
@@ -36,3 +39,7 @@ Route::get('/data_bbtb', [DataBBpTBController::class, 'index']);
 Route::get('/data_imtu', [DataIMTpUController::class, 'index']);
 Route::get('/data_anak', [DataAnakController::class, 'index']);
 Route::get('/tambah_user', [DataUserController::class, 'tambah_user']);
+Route::get('/tambah_anak', [DataAnakController::class, 'tambah_anak']);
+Route::post('/simpan_anak', [DataAnakController::class, 'simpan']);
+Route::post('/get_anak', [KlasifikasiController::class, 'ajax_get']);
+Route::post('/simpan_data', [KlasifikasiController::class, 'simpan_data']);

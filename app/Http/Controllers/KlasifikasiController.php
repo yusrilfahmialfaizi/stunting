@@ -13,16 +13,18 @@ class KlasifikasiController extends Controller
                 return redirect('/');
         };
         // return view('contents/main/analisis');
-        return view('content/main/Zscore');
+        $data['anak'] = DB::table('tbl_anak')->get();
+        return view('content/main/Zscore', $data);
     }
 
     function zscore(Request $request)
     {
 
-        $tgl_lahir = $request->tgl_lahir;
-        $awal  = date_create($tgl_lahir);
-        $akhir = date_create(); // waktu sekarang
-        $diff  = date_diff( $awal, $akhir );
+        $tgl_lahir  = $request->tgl_lahir;
+        $awal       = date_create($tgl_lahir);
+        $akhir      = date_create(); // waktu sekarang
+        $diff       = date_diff( $awal, $akhir );
+        $umur       = ($diff->y *12) + $diff->m;
         
         // echo "<pre>";
         // echo 'Selisih waktu: ';
@@ -39,17 +41,7 @@ class KlasifikasiController extends Controller
         
         
         // echo "</pre>";
-        $nama_anak          = $request->nama_anak;
-        $nama_ibu           = $request->nama_ibu;
-        $nama_ayah          = $request->nama_ayah;
-        $jenis_kelamin      = $request->jenis_kelamin;
-        $tgl_lahir          = $request->tgl_lahir;
-        $desa               = $request->desa;
-        $dusun              = $request->dusun;
-        $rt                 = $request->rt;
-        $rw                 = $request->rw;
-        $posyandu           = $request->posyandu;
-        $umur           = ($diff->y *12) + $diff->m;
+        $id_anak        = $request->id_anak;
         $BB             = $request->bb;
         $TB             = $request->tb;
         $IMT            = $BB/(pow(($TB/100),2));
@@ -264,31 +256,122 @@ class KlasifikasiController extends Controller
 
             # code...
         }
-        $hasil = [
-            'nama_anak'     => $nama_anak,
-            'nama_ayah'     => $nama_ayah,
-            'nama_ibu'      => $nama_ibu,
-            'jenis_kelamin' => $jenis_kelamin,
-            'tgl_lahir'     => $tgl_lahir,
-            'desa'          => $desa,
-            'dusun'         => $dusun,
-            'rw'            => $rw,
-            'rt'            => $rt,
-            'posyandu'      => $posyandu,
-            'BB'            => $BB,
-            'TB'            => $TB,
-            'IMT'           => $IMT,
-            'ZScore_BBpU'   => round($zscoreBBpU, 3),
-            'ZScore_TBpU'   => round($zscoreTBpU, 3),
-            'ZScore_BBpTB'  => round($zscoreBBpTB, 3),
-            'ZScore_IMTpU'  => round($zscoreIMTpU, 3),
-            'BBU'           => $BBU,
-            'TBU'           => $TBU,
-            'BBTB'          => $BBTB,
-            'IMTU'          => $IMTU
-        ];
+        $get = DB::table('tbl_anak')
+                ->join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
+                ->select('tbl_anak.*', 'tbl_desa.nama_desa')
+                ->where('id_anak', $id_anak)    
+                ->get();
+        foreach ($get as $key => $value) {
+            if ($value->jenis_kelamin == "L") {
+                $jenis_kelamin = "Laki - Laki";
+            }else if ($value->jenis_kelamin == "P") {
+                # code...
+                $jenis_kelamin = "Perempuan";
+            }
+            $hasil = [
+                'id_anak'       => $value->id_anak,
+                'nama_anak'     => $value->nama_anak,
+                'nama_ayah'     => $value->nama_ayah,
+                'nama_ibu'      => $value->nama_ibu,
+                'jenis_kelamin' => $jenis_kelamin,
+                'tgl_lahir'     => date("d M Y", strtotime($value->tgl_lahir)),
+                'desa'          => $value->nama_desa,
+                'dusun'         => $value->dusun,
+                'rw'            => $value->rw,
+                'rt'            => $value->rt,
+                'posyandu'      => $value->posyandu,
+                'BB'            => $BB,
+                'TB'            => $TB,
+                'IMT'           => $IMT,
+                'ZScore_BBpU'   => round($zscoreBBpU, 3),
+                'ZScore_TBpU'   => round($zscoreTBpU, 3),
+                'ZScore_BBpTB'  => round($zscoreBBpTB, 3),
+                'ZScore_IMTpU'  => round($zscoreIMTpU, 3),
+                'BBU'           => $BBU,
+                'TBU'           => $TBU,
+                'BBTB'          => $BBTB,
+                'IMTU'          => $IMTU
+            ];
+        }
         $data['hasil'] = $hasil;
         // print_r($hasil);
         return view('content/main/hasil_zscore', $data);
+    }
+
+    function ajax_get(Request $request){
+        $id_anak = $request->id_anak;
+        // $id_anak = "L20210822001";
+        $get = DB::table('tbl_anak')
+                ->join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
+                ->select('tbl_anak.*', 'tbl_desa.nama_desa')
+                ->where('id_anak', $id_anak)    
+                ->get();
+        // print_r($get);
+        foreach ($get as $key => $value) {
+            if ($value->jenis_kelamin == "L") {
+                $jenis_kelamin = "Laki - Laki";
+            }else if ($value->jenis_kelamin == "P") {
+                # code...
+                $jenis_kelamin = "Perempuan";
+            }
+            $data = [
+                'nama_anak'     => $value->nama_anak,
+                'nama_ayah'     => $value->nama_ayah,
+                'nama_ibu'      => $value->nama_ibu,
+                'jenis_kelamin' => $jenis_kelamin,
+                'tgl_lahir'     => date("d M Y", strtotime($value->tgl_lahir)),
+                'desa'          => $value->nama_desa,
+                'dusun'         => $value->dusun,
+                'rw'            => $value->rw,
+                'rt'            => $value->rt,
+                'posyandu'      => $value->posyandu
+            ];
+        }
+        // print_r($data);
+        echo json_encode($data);
+
+    }
+
+    function simpan_data(Request $request){
+        date_default_timezone_set('Asia/Jakarta');
+        $id_anak        = $request->id_anak;
+        $tgl_lahir      = $request->tgl_lahir;
+        $awal           = date_create($tgl_lahir);
+        $akhir          = date_create(); // waktu sekarang
+        $diff           = date_diff( $awal, $akhir );
+        $umur           = ($diff->y *12) + $diff->m;
+        $bb             = $request->bb;
+        $tb             = $request->tb;
+        $imt            = $request->imt;
+        $bbpu           = $request->bbpu;
+        $tbpu           = $request->tbpu;
+        $bbptb          = $request->bbptb;
+        $imtpu          = $request->imtpu;
+        $z_bbpu         = $request->zscore_bbpu;
+        $z_tbpu         = $request->zscore_tbpu;
+        $z_bbptb        = $request->zscore_bbtb;
+        $z_imtpu        = $request->zscore_imtu;
+        $hasil = [
+            'id_anak'       => $id_anak,
+            'umur'          => $umur,
+            'tanggal'       => date("Y-m-d"),
+            'bb'            => $bb,
+            'tb'            => $tb,
+            'imt'           => $imt,
+            'bbpu'          => $bbpu,
+            'z_bbpu'        => $z_bbpu,
+            'tbpu'          => $tbpu,
+            'z_tbpu'        => $z_tbpu,
+            'bbptb'         => $bbptb,
+            'z_bbptb'       => $z_bbptb,
+            'imtpu'         => $imtpu,
+            'z_imtpu'       => $z_imtpu
+        ];
+
+        $insert = DB::table('hasil_zscore')->insert($hasil);
+        if ($insert) {
+            # code...
+            return redirect()->action([KlasifikasiController::class, 'index']);
+        }
     }
 }
