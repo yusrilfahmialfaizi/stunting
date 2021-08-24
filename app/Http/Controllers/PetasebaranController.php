@@ -9,7 +9,7 @@ class PetasebaranController extends Controller
 {
     //
     public function index(Request $request){
-        if ($request->session()->get('status') == 'login'){
+        if ($request->session()->get('status') == 'login' && $request->session()->get('jabatan') == 'petugas' ){
             return redirect('/dashboard');
         };
         // $data['desa'] = DB::table('tbl_desa')->get();
@@ -41,7 +41,7 @@ class PetasebaranController extends Controller
         return view('content/main/peta-sebaran_luar', $data);
     }
     public function peta(Request $request){
-        if ($request->session()->get('status') != 'login'){
+        if ($request->session()->get('status') != 'login' && $request->session()->get('jabatan') != 'petugas' ){
                 return redirect('/');
         };
         // $data['desa']       = DB::table('tbl_desa')->get();

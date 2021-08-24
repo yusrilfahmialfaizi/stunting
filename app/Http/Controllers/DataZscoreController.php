@@ -9,7 +9,7 @@ class DataZscoreController extends Controller
 {
     //
     public function index(Request $request){
-        if ($request->session()->get('status') != 'login'){
+        if ($request->session()->get('status') != 'login' && $request->session()->get('jabatan') != 'petugas' ){
                 return redirect('/');
         };
         // return view('contents/main/analisis');

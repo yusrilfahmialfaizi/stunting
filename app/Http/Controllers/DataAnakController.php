@@ -9,7 +9,7 @@ class DataAnakController extends Controller
 {
     //
     function index(Request $request){
-        if ($request->session()->get('status') != 'login'){
+        if ($request->session()->get('status') != 'login' && $request->session()->get('jabatan') != 'petugas' ){
                 return redirect('/');
         };
         $data['dataset'] =  DB::table('tbl_anak')
@@ -19,7 +19,7 @@ class DataAnakController extends Controller
         return view("content/main/data_anak", $data);
     }
     function tambah_anak(Request $request){
-        if ($request->session()->get('status') != 'login'){
+        if ($request->session()->get('status') != 'login' && $request->session()->get('jabatan') != 'petugas' ){
                 return redirect('/');
         };
         return view("content/main/tambah_anak");

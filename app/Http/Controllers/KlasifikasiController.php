@@ -9,7 +9,7 @@ class KlasifikasiController extends Controller
 {
     //
     function index(Request $request){
-        if ($request->session()->get('status') != 'login'){
+        if ($request->session()->get('status') != 'login' && $request->session()->get('jabatan') != 'petugas' ){
                 return redirect('/');
         };
         // return view('contents/main/analisis');
