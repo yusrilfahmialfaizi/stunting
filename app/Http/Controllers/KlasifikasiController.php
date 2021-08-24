@@ -156,8 +156,8 @@ class KlasifikasiController extends Controller
 
         }elseif ($zscoreBBpU > 1 ) {
 
-            // echo "Resiko Berat Badan Lebih";
-            $BBU = "Resiko Berat Badan Lebih";
+            // echo "risiko Berat Badan Lebih";
+            $BBU = "Risiko Berat Badan Lebih";
 
         }
         // echo $zscoreTBpU;
@@ -206,8 +206,8 @@ class KlasifikasiController extends Controller
 
         }elseif ($zscoreBBpTB > 1 && $zscoreBBpTB <= 2) {
 
-            $BBTB = "Beresiko Gizi Lebih";
-            // echo "Beresiko Gizi Lebih";
+            $BBTB = "Berisiko Gizi Lebih";
+            // echo "Berisiko Gizi Lebih";
 
         }elseif ($zscoreBBpTB > 2 && $zscoreBBpTB <= 3) {
             # code...
@@ -240,8 +240,8 @@ class KlasifikasiController extends Controller
 
         }elseif ($zscoreIMTpU > 1 && $zscoreIMTpU <= 2) {
 
-            $IMTU = "Beresiko Gizi Lebih";
-            // echo "Beresiko Gizi Lebih";
+            $IMTU = "Berisiko Gizi Lebih";
+            // echo "Berisiko Gizi Lebih";
 
         }elseif ($zscoreIMTpU > 2 && $zscoreIMTpU <= 3) {
 
@@ -335,6 +335,7 @@ class KlasifikasiController extends Controller
     function simpan_data(Request $request){
         date_default_timezone_set('Asia/Jakarta');
         $id_anak        = $request->id_anak;
+        $id_user        = $request->session()->get('id_user');
         $tgl_lahir      = $request->tgl_lahir;
         $awal           = date_create($tgl_lahir);
         $akhir          = date_create(); // waktu sekarang
@@ -353,6 +354,7 @@ class KlasifikasiController extends Controller
         $z_imtpu        = $request->zscore_imtu;
         $hasil = [
             'id_anak'       => $id_anak,
+            'id_user'       => $id_user,
             'umur'          => $umur,
             'tanggal'       => date("Y-m-d"),
             'bb'            => $bb,

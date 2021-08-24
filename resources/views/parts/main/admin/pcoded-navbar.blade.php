@@ -115,6 +115,13 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
+                                    <li class=" ">
+                                        <a href="/data-riwayat" data-i18n="nav.form-pickers.main">
+                                            <span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
+                                            <span class="pcoded-mtext">Data Zscore</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="pcoded-hasmenu">

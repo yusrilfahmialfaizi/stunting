@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 23, 2021 at 11:43 AM
+-- Generation Time: Aug 24, 2021 at 05:04 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.20
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `hasil_zscore` (
   `id_hasil` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `id_anak` varchar(30) NOT NULL,
   `umur` int(2) NOT NULL,
   `tanggal` date NOT NULL,
@@ -49,10 +50,11 @@ CREATE TABLE `hasil_zscore` (
 -- Dumping data for table `hasil_zscore`
 --
 
-INSERT INTO `hasil_zscore` (`id_hasil`, `id_anak`, `umur`, `tanggal`, `bb`, `tb`, `imt`, `z_bbpu`, `bbpu`, `z_tbpu`, `tbpu`, `z_bbptb`, `bbptb`, `z_imtpu`, `imtpu`) VALUES
-(1, 'L20210822001', 25, '2021-08-22', 9, 75.5, 15.789, -2.429, 'Berat Badan Kurang', -4.032, 'Sangat Pendek', -1, 'Gizi Baik / Normal', -0.176, 'Gizi Baik / Normal'),
-(2, 'L20210822001', 25, '2021-08-22', 9, 75, 16, -2.429, 'Berat Badan Kurang', -4.194, 'Sangat Pendek', -0.857, 'Gizi Baik / Normal', 0, 'Gizi Baik / Normal'),
-(3, 'P20210822002', 25, '2021-08-22', 9, 75, 16, -2.429, 'Berat Badan Kurang', -4.194, 'Sangat Pendek', -0.857, 'Gizi Baik / Normal', 0, 'Gizi Baik / Normal');
+INSERT INTO `hasil_zscore` (`id_hasil`, `id_user`, `id_anak`, `umur`, `tanggal`, `bb`, `tb`, `imt`, `z_bbpu`, `bbpu`, `z_tbpu`, `tbpu`, `z_bbptb`, `bbptb`, `z_imtpu`, `imtpu`) VALUES
+(1, 2, 'L20210822001', 25, '2021-08-22', 9, 75.5, 15.789, -2.429, 'Berat Badan Kurang', -4.032, 'Sangat Pendek', -1, 'Gizi Baik / Normal', -0.176, 'Gizi Baik / Normal'),
+(2, 2, 'L20210822001', 25, '2021-08-22', 9, 75, 16, -2.429, 'Berat Badan Kurang', -4.194, 'Sangat Pendek', -0.857, 'Gizi Baik / Normal', 0, 'Gizi Baik / Normal'),
+(3, 2, 'P20210822002', 25, '2021-08-22', 9, 75, 16, -2.429, 'Berat Badan Kurang', -4.194, 'Sangat Pendek', -0.857, 'Gizi Baik / Normal', 0, 'Berisiko Gizi Lebih'),
+(4, 2, 'P20210822002', 25, '2021-08-24', 10, 75.5, 17.543, -1.714, 'Berat Badan Normal', -4.032, 'Sangat Pendek', 0.333, 'Gizi Baik / Normal', 1.187, 'Berisiko Gizi Lebih');
 
 -- --------------------------------------------------------
 
@@ -1122,9 +1124,11 @@ INSERT INTO `users` (`id_user`, `nama`, `jabatan`, `username`, `password`) VALUE
 --
 CREATE TABLE `zscore` (
 `id_anak` varchar(30)
+,`nama_petugas` varchar(30)
 ,`nama_anak` varchar(30)
 ,`nama_ayah` varchar(30)
 ,`nama_ibu` varchar(30)
+,`jenis_kelamin` enum('L','P')
 ,`umur` int(2)
 ,`tanggal` date
 ,`nama_desa` tinytext
@@ -1150,7 +1154,7 @@ CREATE TABLE `zscore` (
 --
 DROP TABLE IF EXISTS `zscore`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `zscore`  AS SELECT `a`.`id_anak` AS `id_anak`, `a`.`nama_anak` AS `nama_anak`, `a`.`nama_ayah` AS `nama_ayah`, `a`.`nama_ibu` AS `nama_ibu`, `z`.`umur` AS `umur`, `z`.`tanggal` AS `tanggal`, `d`.`nama_desa` AS `nama_desa`, `d`.`longtd` AS `longtd`, `d`.`latd` AS `latd`, `z`.`bb` AS `bb`, `z`.`tb` AS `tb`, `z`.`imt` AS `imt`, `z`.`z_bbpu` AS `z_bbpu`, `z`.`bbpu` AS `bbpu`, `z`.`z_tbpu` AS `z_tbpu`, `z`.`tbpu` AS `tbpu`, `z`.`z_bbptb` AS `z_bbptb`, `z`.`bbptb` AS `bbptb`, `z`.`z_imtpu` AS `z_imtpu`, `z`.`imtpu` AS `imtpu` FROM ((`hasil_zscore` `z` join `tbl_anak` `a` on((`z`.`id_anak` = `a`.`id_anak`))) join `tbl_desa` `d` on((`a`.`id_desa` = `d`.`id_desa`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `zscore`  AS SELECT `a`.`id_anak` AS `id_anak`, `u`.`nama` AS `nama_petugas`, `a`.`nama_anak` AS `nama_anak`, `a`.`nama_ayah` AS `nama_ayah`, `a`.`nama_ibu` AS `nama_ibu`, `a`.`jenis_kelamin` AS `jenis_kelamin`, `z`.`umur` AS `umur`, `z`.`tanggal` AS `tanggal`, `d`.`nama_desa` AS `nama_desa`, `d`.`longtd` AS `longtd`, `d`.`latd` AS `latd`, `z`.`bb` AS `bb`, `z`.`tb` AS `tb`, `z`.`imt` AS `imt`, `z`.`z_bbpu` AS `z_bbpu`, `z`.`bbpu` AS `bbpu`, `z`.`z_tbpu` AS `z_tbpu`, `z`.`tbpu` AS `tbpu`, `z`.`z_bbptb` AS `z_bbptb`, `z`.`bbptb` AS `bbptb`, `z`.`z_imtpu` AS `z_imtpu`, `z`.`imtpu` AS `imtpu` FROM (((`hasil_zscore` `z` join `tbl_anak` `a` on((`z`.`id_anak` = `a`.`id_anak`))) join `tbl_desa` `d` on((`a`.`id_desa` = `d`.`id_desa`))) join `users` `u` on((`z`.`id_user` = `u`.`id_user`))) ;
 
 --
 -- Indexes for dumped tables
@@ -1161,7 +1165,8 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `hasil_zscore`
   ADD PRIMARY KEY (`id_hasil`),
-  ADD KEY `id_anak` (`id_anak`);
+  ADD KEY `id_anak` (`id_anak`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tbl_anak`
@@ -1220,7 +1225,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `hasil_zscore`
 --
 ALTER TABLE `hasil_zscore`
-  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_bbpb`
@@ -1272,7 +1277,8 @@ ALTER TABLE `users`
 -- Constraints for table `hasil_zscore`
 --
 ALTER TABLE `hasil_zscore`
-  ADD CONSTRAINT `hasil_zscore_ibfk_1` FOREIGN KEY (`id_anak`) REFERENCES `tbl_anak` (`id_anak`);
+  ADD CONSTRAINT `hasil_zscore_ibfk_1` FOREIGN KEY (`id_anak`) REFERENCES `tbl_anak` (`id_anak`),
+  ADD CONSTRAINT `hasil_zscore_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 --
 -- Constraints for table `tbl_anak`

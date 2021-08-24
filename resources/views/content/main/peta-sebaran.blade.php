@@ -227,20 +227,44 @@
                                 mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 
                             var streets = L.tileLayer(mbUrl, {
-                                    id: 'mapbox/streets-v11',
-                                    tileSize: 512,
-                                    zoomOffset: -1,
-                                    attribution: mbAttr
-                                });
+                                id: 'mapbox/streets-v11',
+                                tileSize: 512,
+                                zoomOffset: -1,
+                                attribution: mbAttr
+                            });
+                            
+                            var googlestreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+                                maxZoom: 20,
+                                tileSize: 512,
+                                zoomOffset: -1,
+                                subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+                            });
+
+                            var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+                                maxZoom: 20,
+                                subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+                            });
+                            var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+                                maxZoom: 20,
+                                subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+                            });
+                            var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+                                maxZoom: 20,
+                                subdomains:['mt0','mt1','mt2','mt3']
+                            });
 
                             var map = L.map('map', {
                                 center: [-8.133347613059657, 113.80648288324299],
                                 zoom: 12,
-                                layers: [streets,stunting]
+                                layers: [googleHybrid, stunting]
                             });
 
                             var baseLayers = {
-                                "Streets": streets
+                                "Streets": streets,
+                                "Google Streets" : googlestreets, 
+                                "Google Satelite" :googleSat, 
+                                "Google Hybrid" : googleHybrid,
+                                "Google Terrain" : googleTerrain
                             };
 
                             var overlays = {

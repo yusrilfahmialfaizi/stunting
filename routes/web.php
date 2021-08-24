@@ -11,6 +11,7 @@ use App\Http\Controllers\DataIMTpUController;
 use App\Http\Controllers\DataAnakController;
 use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DataZscoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/auth', [LoginController::class, 'auth']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/coba', [DashboardController::class, 'coba']);
+Route::get('/data-riwayat', [DataZscoreController::class, 'index']);
 Route::get('/peta-sebaran', [PetasebaranController::class, 'index']);
 Route::get('/peta-sebaran-stunting', [PetasebaranController::class, 'peta']);
 Route::get('/zscore', [KlasifikasiController::class, 'index']);
