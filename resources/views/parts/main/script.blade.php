@@ -15,6 +15,11 @@
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\amcharts.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\serial.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\assets\pages\dashboard\amchart\js\light.js')}}"></script>
+    <!-- owl carousel 2 js -->
+    <script type="text/javascript" src="{{asset('assets\bower_components/owl.carousel/js/owl.carousel.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\assets/js/owl-custom.js')}}"></script>
+    <!-- swiper js -->
+    <script type="text/javascript" src="{{asset('assets\bower_components/swiper/js/swiper.min.js')}}"></script>
     <!-- data-table js -->
     <script src="{{asset('assets\bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>

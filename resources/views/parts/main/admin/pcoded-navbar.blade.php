@@ -13,9 +13,15 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
+                                        @if (Session::get('status') == "login" && Session::get('jabatan') == "petugas")
                                         <a href="/dashboard">
+                                            
+                                            @elseif (Session::get('status') != "login" && Session::get('jabatan') != "petugas")
+                                            <a href="/">
+                                            
+                                        @endif
                                             <span class="pcoded-micon"><i class="ti-home"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard </span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>

@@ -35,7 +35,7 @@
                                                             <label class="col-sm-2 col-form-label">Kode Anak</label>
                                                                 <div class="col-sm-4">
                                                                     <select name="id_anak" id="id_anak"
-                                                                    class="js-example-placeholder-multiple col-sm-12"placeholder="Kelurahan / Desa" required>
+                                                                    class="js-example-placeholder-multiple col-sm-12" placeholder="Kelurahan / Desa" required>
                                                                     <option value="&nbsp">--Pilih--</option>
                                                                     @foreach ($anak as $item)
                                                                     <option value="{{$item->id_anak}}">{{$item->id_anak}}</option>

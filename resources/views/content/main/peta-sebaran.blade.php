@@ -24,7 +24,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-block">
-                                                        <div id="map" style="height: 500px; width: 1000px"></div>
+                                                        <div id="map"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -50,6 +50,22 @@
                     <script>
                         $(document).ready(function() {
 
+                            var mapmargin = 50;
+                            $('#map').css("height", ($(window).height() - mapmargin));
+                            $(window).on("resize", resize);
+                            resize();
+
+                            function resize() {
+
+                                if ($(window).width() >= 980) {
+                                    $('#map').css("height", ($(window).height() - mapmargin));
+                                    $('#map').css("margin-top", 50);
+                                } else {
+                                    $('#map').css("height", ($(window).height() - (mapmargin + 12)));
+                                    $('#map').css("margin-top", -21);
+                                }
+
+                            }
                             // // Your web app's Firebase configuration
                             // // For Firebase JS SDK v7.20.0 and later, measurementId is optional
                             // var firebaseConfig = {

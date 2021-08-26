@@ -40,6 +40,14 @@
     <link rel="stylesheet" type="text/css"
         href="{{asset('assets\bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('assets\bower_components/multiselect/css/multi-select.css')}}" />
+    <!-- hover-effect.css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\assets/pages/hover-effect/normalize.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\assets/pages/hover-effect/set2.css')}}">
+    <!-- owl carousel css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\bower_components/owl.carousel/css/owl.carousel.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\bower_components/owl.carousel/css/owl.theme.default.css')}}">
+    <!-- swiper css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\bower_components/swiper/css/swiper.min.css')}}">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\assets\css\style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets\assets\css\jquery.mCustomScrollbar.css')}}">

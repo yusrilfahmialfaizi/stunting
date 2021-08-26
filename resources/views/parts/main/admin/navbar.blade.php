@@ -5,7 +5,14 @@
                         <a class="mobile-menu" id="mobile-collapse" href="#!">
                             <i class="feather icon-menu"></i>
                         </a>
-                        <a href="/dashboard">
+
+                        @if (Session::get('status') == "login" && Session::get('jabatan') == "petugas")
+                            <a href="/dashboard">
+                                
+                        @elseif (Session::get('status') != "login" && Session::get('jabatan') != "petugas")
+                            <a href="/">
+                                
+                        @endif
                             <img class="img-fluid" src="{{asset('assets\assets\images\navbar-brand.png')}}" alt="Theme-Logo">
                         </a>
                         <a class="mobile-options">

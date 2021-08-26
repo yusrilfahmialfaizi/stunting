@@ -24,7 +24,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-block">
-                                                        <div id="map" style="height: 500px; width: 1000px"></div>
+                                                        <div id="map"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -49,6 +49,23 @@
                     <script type="text/javascript" src="{{asset('assets/kalisat.js')}}"></script>
                     <script>
                         $(document).ready(function() {
+
+                            var mapmargin = 50;
+                            $('#map').css("height", ($(window).height() - mapmargin));
+                            $(window).on("resize", resize);
+                            resize();
+
+                            function resize() {
+
+                                if ($(window).width() >= 980) {
+                                    $('#map').css("height", ($(window).height() - mapmargin));
+                                    $('#map').css("margin-top", 50);
+                                } else {
+                                    $('#map').css("height", ($(window).height() - (mapmargin + 12)));
+                                    $('#map').css("margin-top", -21);
+                                }
+
+                            }
 
                             // // Your web app's Firebase configuration
                             // // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -256,7 +273,7 @@
                             var map = L.map('map', {
                                 center: [-8.133347613059657, 113.80648288324299],
                                 zoom: 12,
-                                layers: [googleHybrid]
+                                layers: [googleHybrid, stunting]
                             });
 
                             var baseLayers = {
@@ -268,8 +285,7 @@
                             };
 
                             var overlays = {
-                                "Stunting": stunting, 
-                                "UMKM": umkm
+                                "Stunting": stunting
                             };
 
                             
