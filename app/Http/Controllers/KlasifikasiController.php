@@ -45,7 +45,16 @@ class KlasifikasiController extends Controller
         $BB             = $request->bb;
         $TB             = $request->tb;
         $IMT            = $BB/(pow(($TB/100),2));
-        $jenis_kelamin  = "L";
+        $get = DB::table('tbl_anak')
+                ->join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
+                ->select('tbl_anak.*', 'tbl_desa.nama_desa')
+                ->where('id_anak', $id_anak)    
+                ->get();
+        // print_r($get);
+        foreach ($get as $key => $value) {
+            $jenis_kelamin = $value->jenis_kelamin;
+        }
+        $ukur           = $request->ukur;
         $BBpU           = DB::table('tbl_bb_u')->get();
         $PBpU           = DB::table('tbl_pbu')->get();
         $BBpPB          = DB::table('tbl_bbpb')->get();
@@ -53,7 +62,7 @@ class KlasifikasiController extends Controller
         $IMTpU          = DB::table('tbl_imtu')->get();
         foreach ($BBpU as $key => $value) {
 
-            // print_r($value->umur);
+            
             if ($umur == $value->umur) {
                 if ($jenis_kelamin == $value->jenis_kelamin) {
                     # code..
@@ -71,13 +80,51 @@ class KlasifikasiController extends Controller
 
             // print_r($value->umur);
             if ($umur == $value->umur) {
+                
                 if ($jenis_kelamin == $value->jenis_kelamin) {
-                    # code..
-                    if ($TB > $value->median) {
-                        $zscoreTBpU = ($TB - $value->median)/ ($value->p1SD - $value->median);
-                        // echo $zscore;
+                    if ($ukur == "telentang") {
+                        if ($value->umur == "24a") {
+                            if ($TB > $value->median) {
+                                // echo $value->median;
+                                $zscoreTBpU = ($TB - $value->median)/ ($value->p1SD - $value->median);
+                                // echo $zscore;
+                            }else{
+                                // echo $value->median;
+                                $zscoreTBpU = ($TB - $value->median)/ ($value->median - $value->m1SD);
+                            }
+                        }else{
+                            if ($TB > $value->median) {
+                                // echo $value->median;
+                                $zscoreTBpU = ($TB - $value->median)/ ($value->p1SD - $value->median);
+                                // echo $zscore;
+                            }else{
+                                // echo $value->median;
+                                $zscoreTBpU = ($TB - $value->median)/ ($value->median - $value->m1SD);
+                            }
+
+                        }
                     }else{
-                        $zscoreTBpU = ($TB - $value->median)/ ($value->median - $value->m1SD);
+                        if ($value->umur == "24b") {
+                            if ($TB > $value->median) {
+                                // echo $value->median;
+                                $zscoreTBpU = ($TB - $value->median)/ ($value->p1SD - $value->median);
+                                // echo $zscore;
+                            }else{
+                                // echo $value->median;
+                                $zscoreTBpU = ($TB - $value->median)/ ($value->median - $value->m1SD);
+                            }
+                        }else{
+                            if ($TB > $value->median) {
+                                // echo $value->median;
+                                $zscoreTBpU = ($TB - $value->median)/ ($value->p1SD - $value->median);
+                                // echo $zscore;
+                            }else{
+                                // echo $value->median;
+                                $zscoreTBpU = ($TB - $value->median)/ ($value->median - $value->m1SD);
+                            }
+
+                        }
+
                     }
                 }
             }
@@ -101,7 +148,7 @@ class KlasifikasiController extends Controller
     
             }
             # code...
-        }elseif ($umur > 24 && $umur <= 60 ) {
+        }elseif ($umur >= 24 && $umur <= 60 ) {
             foreach ($BBpTB as $key => $value) {
     
                 // print_r($value->umur);
@@ -314,12 +361,17 @@ class KlasifikasiController extends Controller
                 # code...
                 $jenis_kelamin = "Perempuan";
             }
+            $awal       = date_create($value->tgl_lahir);
+            $akhir      = date_create(); // waktu sekarang
+            $diff       = date_diff( $awal, $akhir );
+            $umur       = ($diff->y *12) + $diff->m;
             $data = [
                 'nama_anak'     => $value->nama_anak,
                 'nama_ayah'     => $value->nama_ayah,
                 'nama_ibu'      => $value->nama_ibu,
                 'jenis_kelamin' => $jenis_kelamin,
                 'tgl_lahir'     => date("d M Y", strtotime($value->tgl_lahir)),
+                'umur'          => $umur,
                 'desa'          => $value->nama_desa,
                 'dusun'         => $value->dusun,
                 'rw'            => $value->rw,

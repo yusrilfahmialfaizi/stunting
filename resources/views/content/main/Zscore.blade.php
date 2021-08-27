@@ -85,6 +85,14 @@
                                                                     placeholder="Tanggal Lahir" readonly>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Umur (bulan)</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" name="umur"
+                                                                    id="umur" class="form-control"
+                                                                    placeholder="Tanggal Lahir" readonly>
+                                                                </div>
+                                                            </div>
                                                             <hr>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">Kelurahan / Desa</label>
@@ -133,6 +141,17 @@
                                                                     <input type="number" name="bb"
                                                                         id="bb" class="form-control"
                                                                         placeholder="BB dalam Kg" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Cara Ukur TB</label>
+                                                                <div class="col-sm-4">
+                                                                    <select name="ukur" id="ukur"
+                                                                    class="form-control" required>
+                                                                        <option value="&nbsp">-- Pilih --</option>
+                                                                        <option value="berdiri">Berdiri</option>
+                                                                        <option value="telentang">Telentang</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -190,6 +209,7 @@
                                         document.getElementById("nama_ibu").value = data.nama_ibu;
                                         document.getElementById("jenis_kelamin").value = data.jenis_kelamin;
                                         document.getElementById("tgl_lahir").value = data.tgl_lahir;
+                                        document.getElementById("umur").value = data.umur;
                                         document.getElementById("desa").value = data.desa;
                                         document.getElementById("dusun").value = data.dusun;
                                         document.getElementById("rt").value = data.rt;
