@@ -1,5 +1,5 @@
 <head>
-    <title>Adminty - Premium Admin Template by Colorlib </title>
+    <title>GiStunting - Geographic Information of Stunting</title>
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
@@ -14,7 +14,7 @@
     <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
     <!-- Favicon icon -->
-    <link rel="icon" href="{{asset('assets\assets\images\favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('assets\assets\images\logo-poltek.ico')}}" type="image/x-icon">
     <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\bower_components\bootstrap\css\bootstrap.min.css')}}">

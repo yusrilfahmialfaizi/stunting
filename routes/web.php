@@ -24,7 +24,7 @@ use App\Http\Controllers\DataZscoreController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'landingpage']);
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/auth', [LoginController::class, 'auth']);
 Route::get('/logout', [LoginController::class, 'logout']);

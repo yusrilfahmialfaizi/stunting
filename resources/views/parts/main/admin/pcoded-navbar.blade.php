@@ -94,69 +94,9 @@
                                         </a>
                                     </li>
                                     <li class=" ">
-                                        <a href="/data_bbu" data-i18n="nav.form-components.main">
-                                            <span class="pcoded-micon"><i class="ti-layers"></i></span>
-                                            <span class="pcoded-mtext">Data BB/U</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="/data_tbu" data-i18n="nav.form-pickers.main">
-                                            <span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
-                                            <span class="pcoded-mtext">Data TB/U atau PB/U</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="/data_bbtb" data-i18n="nav.form-pickers.main">
-                                            <span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
-                                            <span class="pcoded-mtext">Data BB/TB</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="/data_imtu" data-i18n="nav.form-pickers.main">
-                                            <span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
-                                            <span class="pcoded-mtext">Data IMT/U</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
                                         <a href="/data-riwayat" data-i18n="nav.form-pickers.main">
                                             <span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
                                             <span class="pcoded-mtext">Data Zscore</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-info"></i></span>
-                                    <span class="pcoded-mtext">Info</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="javascript:void(0)" data-i18n="nav.bootstrap-table.main">
-                                            <span class="pcoded-micon"><i class="ti-receipt"></i></span>
-                                            <span class="pcoded-mtext">Contact</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="pcoded-hasmenu">
-                                <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="feather icon-map-pin"></i></span>
-                                    <span class="pcoded-mtext">About</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="javascript:void(0)" data-i18n="nav.bootstrap-table.main">
-                                            <span class="pcoded-micon"><i class="ti-receipt"></i></span>
-                                            <span class="pcoded-mtext">About</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
