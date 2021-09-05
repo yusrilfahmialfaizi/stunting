@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 24, 2021 at 05:04 AM
+-- Generation Time: Sep 02, 2021 at 02:45 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.20
 
@@ -54,7 +54,8 @@ INSERT INTO `hasil_zscore` (`id_hasil`, `id_user`, `id_anak`, `umur`, `tanggal`,
 (1, 2, 'L20210822001', 25, '2021-08-22', 9, 75.5, 15.789, -2.429, 'Berat Badan Kurang', -4.032, 'Sangat Pendek', -1, 'Gizi Baik / Normal', -0.176, 'Gizi Baik / Normal'),
 (2, 2, 'L20210822001', 25, '2021-08-22', 9, 75, 16, -2.429, 'Berat Badan Kurang', -4.194, 'Sangat Pendek', -0.857, 'Gizi Baik / Normal', 0, 'Gizi Baik / Normal'),
 (3, 2, 'P20210822002', 25, '2021-08-22', 9, 75, 16, -2.429, 'Berat Badan Kurang', -4.194, 'Sangat Pendek', -0.857, 'Gizi Baik / Normal', 0, 'Berisiko Gizi Lebih'),
-(4, 2, 'P20210822002', 25, '2021-08-24', 10, 75.5, 17.543, -1.714, 'Berat Badan Normal', -4.032, 'Sangat Pendek', 0.333, 'Gizi Baik / Normal', 1.187, 'Berisiko Gizi Lebih');
+(4, 2, 'P20210822002', 25, '2021-08-24', 10, 75.5, 17.543, -1.714, 'Berat Badan Normal', -4.032, 'Sangat Pendek', 0.333, 'Gizi Baik / Normal', 1.187, 'Berisiko Gizi Lebih'),
+(5, 2, 'L20210822001', 25, '2021-08-28', 10, 80, 15.625, -1.714, 'Berat Badan Normal', -2.581, 'Pendek', -0.667, 'Gizi Baik / Normal', -0.313, 'Gizi Baik / Normal');
 
 -- --------------------------------------------------------
 
@@ -82,7 +83,7 @@ CREATE TABLE `tbl_anak` (
 
 INSERT INTO `tbl_anak` (`id_anak`, `nama_anak`, `nama_ayah`, `nama_ibu`, `jenis_kelamin`, `tgl_lahir`, `id_desa`, `dusun`, `rt`, `rw`, `posyandu`) VALUES
 ('L20210822001', 'M.Afin', 'Muhammad', 'Afin', 'L', '2019-07-22', 1, 'Krajan', '004', '005', 'Aggrek'),
-('P20210822002', 'Amira ainul M', 'Muhammad', 'Ainul', 'P', '2019-07-22', 2, 'Krajan', '004', '005', 'Aggrek');
+('P20210822002', 'Amira ainul M', 'Muhammad', 'Ainul', 'P', '2019-08-22', 2, 'Krajan', '004', '005', 'Aggrek');
 
 -- --------------------------------------------------------
 
@@ -1225,7 +1226,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `hasil_zscore`
 --
 ALTER TABLE `hasil_zscore`
-  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_bbpb`

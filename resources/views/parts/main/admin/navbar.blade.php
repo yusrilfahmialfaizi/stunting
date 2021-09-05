@@ -13,7 +13,7 @@
                             <a href="/">
                                 
                         @endif
-                            <img class="img-fluid" src="{{asset('assets\assets\images\navbar-brand.png')}}" alt="Theme-Logo">
+                            <img class="img-fluid" src="{{asset('assets\extra-pages\landingpage\assets\logos\kemendikbud_polije_2.png')}}" alt="Theme-Logo">
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>

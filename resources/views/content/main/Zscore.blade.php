@@ -38,7 +38,7 @@
                                                                     class="js-example-placeholder-multiple col-sm-12" placeholder="Kelurahan / Desa" required>
                                                                     <option value="&nbsp">--Pilih--</option>
                                                                     @foreach ($anak as $item)
-                                                                    <option value="{{$item->id_anak}}">{{$item->id_anak}}</option>
+                                                                    <option value="{{$item->id_anak}}">{{$item->id_anak}} | {{$item->nama_anak}}</option>
                                                                         
                                                                     @endforeach
                                                                     </select>

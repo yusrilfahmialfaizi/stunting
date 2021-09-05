@@ -31,7 +31,7 @@
             <div class="pcoded-main-container">
                 @include('parts.main.admin.pcoded-navbar')
                 <!-- Sidebar chat start -->
-                @include('parts.main.sidebar')
+                @include('parts.main.admin.sidebar')
                 <!-- Sidebar inner chat end-->
                 <div class="pcoded-wrapper">
                     

@@ -14,8 +14,8 @@
                                             <div class="col-xl-10 col-md-12">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5>Data Anak</h5>
-                                                        <span class="text-muted">Data Anak Laki-Laki dan Perempuan Kecamatan Kalisat</span>
+                                                        <h5>Data Detail Potensi Desa</h5>
+                                                        <span class="text-muted">Data Detail Potensi Desa di Desa Kemuning Lor</span>
                                                         <div class="card-header-right">
                                                             <ul class="list-unstyled card-option">
                                                                 <li><i class="feather icon-maximize full-card"></i></li>
@@ -27,7 +27,7 @@
                                                     <div class="card-block">
                                                         <div class="form-group row">
                                                             <div class="col-sm-2">
-                                                                <a href="{{url('data-anak/create')}}" class="btn btn-primary"> + Tambah Data Anak</a>
+                                                                <a href="{{url('data-user/create')}}" class="btn btn-primary"> + Tambah Data</a>
                                                             </div>
                                                         </div>
                                                         <hr>
@@ -37,16 +37,9 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th>No.</th>
-                                                                        <th>Nama Anak</th>
-                                                                        <th>Nama Ayah</th>
-                                                                        <th>Nama Ibu</th></th>
-                                                                        <th>Jenis Kelamin</th>
-                                                                        <th>Tanggal Lahir</th>
-                                                                        <th>Kelurahan / Desa</th>
-                                                                        <th>Dusun</th>
-                                                                        <th>Rt.</th>
-                                                                        <th>Rw.</th>
-                                                                        <th>Posyandu</th>
+                                                                        <th>Nama User</th>
+                                                                        <th>Jabatan</th>
+                                                                        <th>Username</th>
                                                                         <th>Action</th>
                                                                     </tr>
                                                                 </thead>
@@ -56,38 +49,31 @@
                                                                     @endphp
                                                                     @foreach($dataset as $data)
                                                                     <tr>
-                                                                        <td>{{$data->id_anak}}</td>
-                                                                        <td>{{$data->nama_anak}}</td>
-                                                                        <td>{{$data->nama_ayah}}</td>
-                                                                        <td>{{$data->nama_ibu}}</td>
-                                                                        <td>{{$data->jenis_kelamin}}</td>
-                                                                        <td>{{$data->tgl_lahir}}</td>
-                                                                        <td>{{$data->nama_desa}}</td>
-                                                                        <td>{{$data->dusun}}</td>
-                                                                        <td>{{$data->rt}}</td>
-                                                                        <td>{{$data->rw}}</td>
-                                                                        <td>{{$data->posyandu}}</td>
+                                                                        @if ($data->jabatan != 'admin')
+                                                                        <td>{{$n++}}</td>
+                                                                        <td>{{$data->nama}}</td>
+                                                                        <td>{{$data->jabatan}}</td>
+                                                                        <td>{{$data->username}}</td>
                                                                         <td>
-                                                                            <a href="{{url('data-anak/'.$data->id_anak.'/edit')}}" type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="tooltip"
-                                                                            data-placement="top" title=""
-                                                                            data-original-title="Update"><i class="feather icon-edit-2"></i></a>
-                                                                        </td>
+                                                                            <div class="btn-group " role="group">
+                                                                                <a href="{{url('data-user/'.$data->id_user.'/edit')}}" type="button" class="btn btn-warning btn-sm waves-effect waves-light" data-toggle="tooltip"
+                                                                                data-placement="top" title=""
+                                                                                data-original-title="Update"><i class="feather icon-edit-2"></i></a>
+                                                                                <a href="javascript:void(0)" class="btn btn-danger btn-sm waves-effect waves-light button" id="delete" data-toggle="tooltip"
+                                                                                data-placement="top" title=""
+                                                                                data-original-title="delete" data-url="{{url('data-user/'.$data->id_user)}}" data-id="{{$data->id_user}}"><i class="feather icon-trash"></i></a>
+                                                                            </div>
+                                                                        </td>    
+                                                                        @endif
                                                                     </tr>
                                                                     @endforeach
                                                                 </tbody>
                                                                 <tfoot>
                                                                     <tr>
                                                                         <th>No.</th>
-                                                                        <th>Nama Anak</th>
-                                                                        <th>Nama Ayah</th>
-                                                                        <th>Nama Ibu</th></th>
-                                                                        <th>Jenis Kelamin</th>
-                                                                        <th>Tanggal Lahir</th>
-                                                                        <th>Kelurahan / Desa</th>
-                                                                        <th>Dusun</th>
-                                                                        <th>Rt.</th>
-                                                                        <th>Rw.</th>
-                                                                        <th>Posyandu</th>
+                                                                        <th>Nama User</th>
+                                                                        <th>Jabatan</th>
+                                                                        <th>Username</th>
                                                                         <th>Action</th>
                                                                     </tr>
                                                                 </tfoot>
@@ -101,6 +87,10 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                {{-- <div id="styleSelector">
+                                    
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -109,9 +99,6 @@
                             $(".button").on('click', function() {
                                 var id = $(this).data('id');
                                 var url = $(this).data('url');
-                                // e.preventDefault();
-                                // var url = e.target;
-                                console.log(url);
                                 swal({
                                         title: "Are you sure?",
                                         text: "Your will not be able to recover this imaginary file!",

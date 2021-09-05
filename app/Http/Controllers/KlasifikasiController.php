@@ -4,49 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\DataAnak;
+use App\Models\BBpPB;
+use App\Models\BBpTB;
+use App\Models\BBpU;
+use App\Models\IMTpU;
+use App\Models\PBpU;
 
 class KlasifikasiController extends Controller
 {
     //
     function index(Request $request){
-        if ($request->session()->get('status') != 'login' && $request->session()->get('jabatan') != 'petugas' ){
-                return redirect('/');
+        if ($request->session()->get('status') != 'login' ){
+            return redirect('/');
+        }
+        else if ($request->session()->get('jabatan') == 'admin' ) {
+            # code...
+            return redirect('/dashboard-admin');
         };
         // return view('contents/main/analisis');
-        $data['anak'] = DB::table('tbl_anak')->get();
+        $data['anak'] = DataAnak::all();
         return view('content/main/Zscore', $data);
     }
 
     function zscore(Request $request)
     {
 
-        $tgl_lahir  = $request->tgl_lahir;
-        $awal       = date_create($tgl_lahir);
-        $akhir      = date_create(); // waktu sekarang
-        $diff       = date_diff( $awal, $akhir );
-        $umur       = ($diff->y *12) + $diff->m;
-        
-        // echo "<pre>";
-        // echo 'Selisih waktu: ';
-        // echo $diff->y . ' tahun, ';
-        // echo $diff->m . ' bulan, ';
-        // echo $diff->d . ' hari, ';
-        // echo $diff->h . ' jam, ';
-        // echo $diff->i . ' menit, ';
-        // echo $diff->s . ' detik, ';
-        // // Output: Selisih waktu: 28 tahun, 5 bulan, 9 hari, 13 jam, 7 menit, 7 detik
-
-        // echo 'Total selisih hari : ' . $diff->days;
-        // echo 'Total selisih hari : ' . $umur;
-        
-        
-        // echo "</pre>";
+        $tgl_lahir      = $request->tgl_lahir;
+        $awal           = date_create($tgl_lahir);
+        $akhir          = date_create(); // waktu sekarang
+        $diff           = date_diff( $awal, $akhir );
+        $umur           = ($diff->y *12) + $diff->m;
         $id_anak        = $request->id_anak;
         $BB             = $request->bb;
         $TB             = $request->tb;
         $IMT            = $BB/(pow(($TB/100),2));
-        $get = DB::table('tbl_anak')
-                ->join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
+        $get = DataAnak::join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
                 ->select('tbl_anak.*', 'tbl_desa.nama_desa')
                 ->where('id_anak', $id_anak)    
                 ->get();
@@ -55,11 +48,11 @@ class KlasifikasiController extends Controller
             $jenis_kelamin = $value->jenis_kelamin;
         }
         $ukur           = $request->ukur;
-        $BBpU           = DB::table('tbl_bb_u')->get();
-        $PBpU           = DB::table('tbl_pbu')->get();
-        $BBpPB          = DB::table('tbl_bbpb')->get();
-        $BBpTB          = DB::table('tbl_bbtb')->get();
-        $IMTpU          = DB::table('tbl_imtu')->get();
+        $BBpU           = BBpU::all();
+        $PBpU           = TBpU::all();
+        $BBpPB          = BBpPB::all();
+        $BBpTB          = BBpTB::all();
+        $IMTpU          = IMTpU::all();
         foreach ($BBpU as $key => $value) {
 
             
@@ -348,8 +341,7 @@ class KlasifikasiController extends Controller
     function ajax_get(Request $request){
         $id_anak = $request->id_anak;
         // $id_anak = "L20210822001";
-        $get = DB::table('tbl_anak')
-                ->join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
+        $get = DataAnak::join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
                 ->select('tbl_anak.*', 'tbl_desa.nama_desa')
                 ->where('id_anak', $id_anak)    
                 ->get();

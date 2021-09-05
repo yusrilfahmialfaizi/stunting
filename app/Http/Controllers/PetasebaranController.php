@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\HasilZscore;
 
 class PetasebaranController extends Controller
 {
@@ -13,8 +14,7 @@ class PetasebaranController extends Controller
             return redirect('/dashboard');
         };
         // $data['desa'] = DB::table('tbl_desa')->get();
-        $data['desa']  = DB::table('zscore')
-            ->select(\DB::raw("nama_desa, longtd,latd,
+        $data['desa']  =  HasilZscore::select(\DB::raw("nama_desa, longtd,latd,
                 COUNT(CASE WHEN `bbpu` = 'Berat Badan Sangat Kurang' THEN 1 END) AS bb_sangat_kurang,
                 COUNT(CASE WHEN `bbpu` = 'Berat Badan Kurang' THEN 1 END) AS bb_kurang,
                 COUNT(CASE WHEN `bbpu` = 'Berat Badan Normal' THEN 1 END) AS bb_normal,
@@ -36,17 +36,22 @@ class PetasebaranController extends Controller
                 COUNT(CASE WHEN `imtpu` = 'Gizi Lebih' THEN 1 END) AS imtu_gizi_lebih,
                 COUNT(CASE WHEN `imtpu` = 'Obesitas' THEN 1 END) AS imtu_obesitas
                 "))
+            ->join('tbl_anak', 'hasil_zscore.id_anak', '=', 'tbl_anak.id_anak')
+            ->join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
+            ->join('users', 'hasil_zscore.id_user', '=', 'users.id_user')
             ->groupby('nama_desa', 'longtd', 'latd')
             ->get();
         return view('content/main/peta-sebaran_luar', $data);
     }
     public function peta(Request $request){
-        if ($request->session()->get('status') != 'login' && $request->session()->get('jabatan') != 'petugas' ){
-                return redirect('/');
+        if ($request->session()->get('status') != 'login' ){
+            return redirect('/');
+        }
+        else if ($request->session()->get('jabatan') == 'admin' ) {
+            # code...
+            return redirect('/dashboard-admin');
         };
-        // $data['desa']       = DB::table('tbl_desa')->get();
-        $data['desa']  = DB::table('zscore')
-                                ->select(\DB::raw("nama_desa, longtd,latd,
+        $data['desa']  = HasilZscore::select(\DB::raw("nama_desa, longtd,latd,
                                     COUNT(CASE WHEN `bbpu` = 'Berat Badan Sangat Kurang' THEN 1 END) AS bb_sangat_kurang,
                                     COUNT(CASE WHEN `bbpu` = 'Berat Badan Kurang' THEN 1 END) AS bb_kurang,
                                     COUNT(CASE WHEN `bbpu` = 'Berat Badan Normal' THEN 1 END) AS bb_normal,
@@ -68,11 +73,11 @@ class PetasebaranController extends Controller
                                     COUNT(CASE WHEN `imtpu` = 'Gizi Lebih' THEN 1 END) AS imtu_gizi_lebih,
                                     COUNT(CASE WHEN `imtpu` = 'Obesitas' THEN 1 END) AS imtu_obesitas
                                     "))
+                                ->join('tbl_anak', 'hasil_zscore.id_anak', '=', 'tbl_anak.id_anak')
+                                ->join('tbl_desa', 'tbl_anak.id_desa', '=', 'tbl_desa.id_desa')
+                                ->join('users', 'hasil_zscore.id_user', '=', 'users.id_user')
                                 ->groupby('nama_desa', 'longtd', 'latd')
                                 ->get();
-        // echo "<pre>";
-        // print_r($data);
-        // echo "<;pre>";
         return view('content/main/peta-sebaran', $data);
     }
 }

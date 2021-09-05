@@ -87,7 +87,7 @@
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class=" ">
-                                        <a href="/data_anak" data-i18n="nav.form-components.main">
+                                        <a href="/data-anak" data-i18n="nav.form-components.main">
                                             <span class="pcoded-micon"><i class="ti-layers"></i></span>
                                             <span class="pcoded-mtext">Data Anak</span>
                                             <span class="pcoded-mcaret"></span>

@@ -57,7 +57,6 @@
                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to=""></li>
                             </ol>
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
@@ -79,10 +78,6 @@
                                 <div class="carousel-item">
                                     <img class="d-block img-fluid w-100"
                                         src="{{asset('assets/assets/images/PEMERIKSAAN KESEHATAN JALUR PMDK-PA.jpg')}}" alt="Third slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block img-fluid w-100"
-                                        src="{{asset('assets/assets/images/IMG_2040.jpg')}}" alt="Third slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"

@@ -1,4 +1,4 @@
-                    @extends('parts.main.admin.master')
+                    @extends('parts.main.admin.master-admin')
                     @section('content')
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -76,19 +76,14 @@
                                                 <div class="card">
                                                     <div class="card-header"></div>
                                                     <div class="card-block">
-                                                        <center><h1>Puskesmas Kalisat</h1></center>
+                                                        <center><h1>Kemuning Lor</h1></center>
                                                         <hr>
-                                                        <center><h1>Visi</h1></center>
-                                                        <center><p>Terwujudnya Masyarakat Kalisat Sehat</p></center>
-                                                        <center><h1>Misi</h1></center>
-                                                        <center>
-                                                            <ul>
-                                                                <li> - Menggerakkan pembagunan berwawasan kesehatan di wilayah kerja Puskesmas Kalisat</li>
-                                                                <li> - Mendorong kemandirian hidup sehat bagi perorangan, keluarga dan masyarakat di wilayah kerja Puskesmas Kalisat</li>
-                                                                <li> - Memelihara dan meningkatkan mutu,pemerataan dan keterjangkauan pelayanan kesehatan yang diselenggarakan</li>
-                                                                <li> - Memelihara dan meningkatkan kesehatan perorangan, keluarga, masyarakat beserta lingkungannya</li>
-                                                            </ul>
-                                                        </center>
+                                                        <br>
+                                                        <center><p>Desa  Kemuning  Lor  dikenal  sebagai  desa  agraris,memiliki  potensi  alam  yang
+
+cukup prospektif bagi pengembangan perekonomian wilayah di tingkat desa.Sesuai dengan potensi desa yang ada, perekonomian di Desa Kemuning Lor masih mengandalkan pada sektor pertanian sebagai basis dan penggerak roda perekonomian wilayah. Pertanian sebagai sektor unggulan sampai saat ini masih memilki peran yang dominan dan strategis bagi pembangunan perekonomian baik sebagai : penyedia bahan pangan, bahan baku produk olahan, peningkatan pendapatan desa dan masyarakat serta penyerapan tenaga kerja dalam jumlah
+yang signifikan.
+</p></center>
                                                     </div>
                                                     <div class="card-footer"></div>
                                                 </div>

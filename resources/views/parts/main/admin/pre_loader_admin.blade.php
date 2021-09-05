@@ -29,7 +29,7 @@
             @include('parts.main.admin.navbar')
             <!-- Menu header end -->
             <div class="pcoded-main-container">
-                @include('parts.main.admin.pcoded-navbar')
+                @include('parts.main.admin.pcoded-navbar-admin')
                 <!-- Sidebar chat start -->
                 @include('parts.main.admin.sidebar')
                 <!-- Sidebar inner chat end-->

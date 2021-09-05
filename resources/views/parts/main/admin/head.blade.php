@@ -34,6 +34,10 @@
         href="{{asset('assets\assets\pages\data-table\css\buttons.dataTables.min.css')}}">
     <link rel="stylesheet" type="text/css"
         href="{{asset('assets\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css')}}">
+    <!-- sweet alert framework -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/bower_components/sweetalert/css/sweetalert.css')}}">
+    <!-- animation nifty modal window effects css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/assets/css/component.css')}}">
     <!-- Select 2 css -->
     <link rel="stylesheet" href="{{asset('assets\bower_components/select2/css/select2.min.css')}}" />
     <!-- Multi Select css -->

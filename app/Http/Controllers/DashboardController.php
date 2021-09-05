@@ -9,18 +9,32 @@ class DashboardController extends Controller
 {
     //
     public function index(Request $request){
-        if ($request->session()->get('status') == 'login' && $request->session()->get('jabatan') == 'petugas' ){
-            return redirect('/dashboard');
-        };
-        return view('content/main/dashboard_luar');
-    }
-    public function dashboard(Request $request){
-        if ($request->session()->get('status') != 'login' && $request->session()->get('jabatan') != 'petugas' ){
+        if ($request->session()->get('status') != 'login' ){
             return redirect('/');
+        }
+        else if ($request->session()->get('jabatan') == 'admin' ) {
+            # code...
+            return redirect('/dashboard-admin');
         };
         return view('content/main/dashboard');
     }
-    function landingpage(){
+    public function dashboard(Request $request){
+        if ($request->session()->get('status') != 'login'){
+            return redirect('/');
+        }
+        else if ($request->session()->get('jabatan') == 'petugas' ) {
+            # code...
+            return redirect('/dashboard');
+        };
+        return view('content/main/dashboard_admin');
+    }
+    function landingpage(Request $request){
+        if ($request->session()->get('status') == 'login' || $request->session()->get('jabatan') == 'petugas' ){
+            return redirect('/dashboard');
+        }else if ($request->session()->get('status') == 'login' || $request->session()->get('jabatan') == 'admin' ) {
+            # code...
+            return redirect('/dashboard-admin');
+        };
         $data['desa']  = DB::table('zscore')
                         ->select(\DB::raw("nama_desa, longtd,latd,
                             COUNT(CASE WHEN `bbpu` = 'Berat Badan Sangat Kurang' THEN 1 END) AS bb_sangat_kurang,

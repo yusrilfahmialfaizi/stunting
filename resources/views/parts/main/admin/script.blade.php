@@ -34,6 +34,12 @@
     </script>
     <script src="{{asset('assets\assets\pages\data-table\extensions\buttons\js\extension-btns-custom.js')}}"></script>
     <script src="{{asset('assets\assets\pages\data-table\js\data-table-custom.js')}}"></script>
+    <!-- sweet alert js -->
+    <script type="text/javascript" src="{{asset('assets/assets/js/sweetalert.js')}}"></script>
+    <!-- sweet alert modal.js intialize js -->
+    <!-- modalEffects js nifty modal window effects -->
+    <script type="text/javascript" src="{{asset('assets/assets/js/modalEffects.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/assets/js/classie.js')}}"></script>
     <!-- Select 2 js -->
     <script type="text/javascript" src="{{asset('assets\bower_components/select2/js/select2.full.min.js')}}"></script>
     <!-- Multiselect js -->
