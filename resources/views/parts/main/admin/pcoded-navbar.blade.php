@@ -94,6 +94,13 @@
                                         </a>
                                     </li>
                                     <li class=" ">
+                                        <a href="/data-desa" data-i18n="nav.form-components.main">
+                                            <span class="pcoded-micon"><i class="ti-layers"></i></span>
+                                            <span class="pcoded-mtext">Data Desa</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
                                         <a href="/data-riwayat" data-i18n="nav.form-pickers.main">
                                             <span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
                                             <span class="pcoded-mtext">Data Zscore</span>
@@ -105,7 +112,7 @@
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
                                     <span class="pcoded-micon"><i class="feather icon-user"></i></span>
-                                    <span class="pcoded-mtext">{{ request()->session()->get('nama') }}</span>
+                                    <span class="pcoded-mtext">Halo, {{ request()->session()->get('nama') }} !!!</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">

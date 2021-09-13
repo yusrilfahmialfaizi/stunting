@@ -12,6 +12,7 @@ use App\Http\Controllers\DataAnakController;
 use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DataZscoreController;
+use App\Http\Controllers\DesaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,4 @@ Route::post('/simpan_data', [KlasifikasiController::class, 'simpan_data']);
 
 Route::resource('data-anak', DataAnakController::class);
 Route::resource('data-user', DataUserController::class);
+Route::resource('data-desa', DesaController::class);

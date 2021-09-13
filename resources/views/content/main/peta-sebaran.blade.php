@@ -270,7 +270,7 @@
                             });
 
                             var map = L.map('map', {
-                                center: [-8.133347613059657, 113.80648288324299],
+                                center: [-8.264071128904432, 113.44838799673902],
                                 zoom: 12,
                                 layers: [googleHybrid, stunting]
                             });
@@ -328,8 +328,8 @@
                                     d > 100 ? '#FC4E2A' :
                                     d > 50 ? '#FD8D3C' :
                                     d > 20 ? '#FEB24C' :
-                                    d > 10 ? '#FED976' :
-                                    '#FFEDA0';
+                                    d > 10 ? '#009000' :
+                                    '#008000';
                             }
 
                             function style(feature) {

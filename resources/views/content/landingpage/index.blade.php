@@ -44,9 +44,9 @@
                 <div class="hero-content app-hero-content text-center">
                     <div class="row justify-content-md-center">
                          <div class="col-md-10">
-                        <h1 class="wow fadeInUp" data-wow-delay="0s">Pusat Kesehatan Masyarakat Kalisat</h1>
+                        <h1 class="wow fadeInUp" data-wow-delay="0s">Pusat Kesehatan Masyarakat Umbulsari</h1>
                         <p class="wow fadeInUp" data-wow-delay="0.2s">
-                            Sistem Informasi Geografis Potensi dan Sebaran Kasus Stunting<br class="hidden-xs"> Kerjasama antara Politeknik Negeri Jember dan Puskesmas Kalisat
+                            Sistem Informasi Geografis Potensi dan Sebaran Kasus Stunting<br class="hidden-xs"> Kerjasama antara Politeknik Negeri Jember dan Puskesmas Umbulsari
                         </p>
                     </div>
                     <div class="col-md-12">
@@ -151,7 +151,7 @@
                         <p>
                             Silahkan Click Hubungi Nomor Whatsapp
                         </p>
-                        <a href="https://api.whatsapp.com/send?phone=6285839152974" class="btn btn-primary btn-action btn-fill">Hubungi Whatsapp</a>
+                        <a href="https://api.whatsapp.com/send?phone=62812-9295-4539" class="btn btn-primary btn-action btn-fill">Hubungi Whatsapp</a>
                     </div>
                 </div>
                 <div class="f-left">
@@ -188,7 +188,7 @@
                             </div>
                         </div>                       
                         <div class="testimonial-single"><img class="img-circle"
-                                src="{{asset('assets\extra-pages\landingpage\assets\images\testimonial1.jpg')}}"
+                                src="{{asset('assets\extra-pages\landingpage\assets\images\estin.jpg')}}"
                                 alt="Client Testimonoal">
                             <div class="testimonial-text">
                                 <p>DOSEN</p>
@@ -420,7 +420,7 @@
         });
 
         var map = L.map('map', {
-            center: [-8.133347613059657, 113.80648288324299],
+            center: [-8.264071128904432, 113.44838799673902],
             zoom: 12,
             layers: [googleHybrid, stunting]
         });
@@ -467,8 +467,8 @@
                 d > 100 ? '#FC4E2A' :
                 d > 50 ? '#FD8D3C' :
                 d > 20 ? '#FEB24C' :
-                d > 10 ? '#FED976' :
-                '#FFEDA0';
+                d > 10 ? '#009000' :
+                '#008000';
         }
 
         function style(feature) {
